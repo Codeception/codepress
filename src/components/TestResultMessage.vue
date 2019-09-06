@@ -17,7 +17,12 @@
 <script>
 export default {
     name: 'TestResultMessage',
-    props: ['test']
+    props: ['test'],
+    methods: {
+        trim(str) {
+        return str.trim();
+        },
+    }
 }
 </script>
 
