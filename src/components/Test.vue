@@ -95,18 +95,7 @@
         </ul>
       </div>
 
-      <!-- TODO Create separate component -->
-      <div v-if="test.result === 'failed'" class="Test-error notification is-danger">
-        <p>
-          {{trim(test.error.message)}}
-        </p>
-        <p>
-          FAILED in {{test.duration}}s
-        </p>
-      </div>
-      <div v-if="test.result === 'passed'" class="Test-passed notification is-success">
-          PASSED in {{test.duration}}s
-      </div>
+      <TestResultMessage :test="test" />
 
       <div class="Test-spacer"></div>
     </div>
@@ -118,13 +107,14 @@
 import moment from 'moment';
 import Step from './Step';
 import ScenarioSource from './ScenarioSource';
+import TestResultMessage from './TestResultMessage';
 import Convert from 'ansi-to-html';
 
 export default {
   name: 'Test',
   props: ['test', 'scenario'],
   components: {
-    Step, ScenarioSource,
+    Step, ScenarioSource, TestResultMessage,
   },
   data: function () {
     return {
@@ -208,19 +198,6 @@ export default {
 .Test-spacer {
   height: 2em;
   width: 100%;
-}
-
-.Test-error {
-  font-family: Inconsolata, monospace;
-  font-size:0.9rem;
-  margin-top: .5em;
-}
-
-.Test-passed {
-  font-family: Inconsolata, monospace;
-  margin-top: .5em;
-  font-size:0.9rem;
-  padding: .5em;
 }
 
 .InteractiveShell {
