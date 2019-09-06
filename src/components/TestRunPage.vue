@@ -6,7 +6,7 @@
 
     <aside class="Sidebar">
       <div v-if="scenario && tests.length > 0">
-        <Test v-for="test in tests"
+        <TestRun v-for="test in tests"
           :key="test.title"
           :test="test"
           :scenario="scenario"
@@ -33,7 +33,7 @@
 <script>
 import axios from 'axios';
 import Header from './Header';
-import Test from './Test';
+import TestRun from './TestRun';
 import Snapshot from './Snapshot';
 import ScenarioSource from './ScenarioSource';
 
@@ -50,11 +50,11 @@ const scrollToLastStep = () => {
 }
 
 export default {
-  name: 'TestRun',
+  name: 'TestRunPage',
   props: {},
   components: {
     Header,
-    Test,
+    TestRun,
     Snapshot,
     ScenarioSource
   },

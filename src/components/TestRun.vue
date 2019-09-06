@@ -111,7 +111,7 @@ import TestResultMessage from './TestResultMessage';
 import Convert from 'ansi-to-html';
 
 export default {
-  name: 'Test',
+  name: 'TestRun',
   props: ['test', 'scenario'],
   components: {
     Step, ScenarioSource, TestResultMessage,
