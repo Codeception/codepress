@@ -9,14 +9,14 @@
 
       <div class="SnapshotREST-request" v-if="step.args[1]">
         <h3>Request</h3>
-        <pre>
+        <pre class="request">
           <code>{{JSON.stringify(step.args[1], null, 2)}}</code>
         </pre>
       </div>
 
       <div class="SnapshotREST-response" v-if="step.returnValue">
         <h3>Response</h3>
-        <pre>
+        <pre class="response">
           <code>{{JSON.stringify(step.returnValue, null, 2)}}</code>
         </pre>
       </div>
@@ -34,8 +34,12 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .SnapshotREST {
   font-size: 0.8em;
+}
+
+.request, .response {
+  max-height: 75vh;
 }
 </style>
