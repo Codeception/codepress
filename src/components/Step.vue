@@ -17,13 +17,10 @@
     </div>
 
     <div class="StepWrapper"    v-else-if="true">
-
-
-      <WaiterStep :step="step" v-if="isWaiterStep(step)" />
+      <GrabberStep :step="step" v-if="isGrabberStep(step)" />
+      <WaiterStep :step="step" v-else-if="isWaiterStep(step)" />
       <AssertionStep :step="step" v-else-if="isAssertionStep(step)" />
       <div class="step" :class="{ 
-        wait: isWaiterStep(step), 
-        grab: isGrabberStep(step), 
         tech: isTechnicalStep(step) }"
         v-else-if="true"
         >
@@ -162,6 +159,7 @@ import axios from 'axios';
 import {getSelectorString} from '../services/selector';
 
 import AssertionStep from './steps/AssertionStep';
+import GrabberStep from './steps/GrabberStep';
 import WaiterStep from './steps/WaiterStep';
 import ActionStep from './steps/ActionStep';
 import SendStep from './steps/SendStep';
@@ -192,6 +190,7 @@ export default {
   components: {
     SendStep,
     ActionStep,
+    GrabberStep,
     AssertionStep,
     SeeStep,
     DontSeeStep,
@@ -340,7 +339,8 @@ export default {
 
     .argument {
       color: hsl(204, 86%, 53%);
-      display: inline;
+      display: inline-block;
+      vertical-align: bottom;
       border-bottom: 1px solid;
       @apply text-blue-600 border-blue-400;
       padding: 0;

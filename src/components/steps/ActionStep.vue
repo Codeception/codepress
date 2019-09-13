@@ -1,5 +1,5 @@
 <template>
-  <div class="ActoinStep step">
+  <div class="step">
     I {{step.humanized}} 
     <span v-for="arg of step.args" v-bind:key="arg" class="argument">
       {{ arg }}
