@@ -2,7 +2,7 @@
   <div class="StepContainer" 
     :class="{ 'StepContainer--selected': isSelected, 'StepContainer--failed': step.result === 'failed', 'StepContainer--passed': step.result === 'passed' }"
     @click="handleSelectStep(step)">
-    <div class="StepWrapper StepWrapper--indent2" v-if="isMetaStep(step)">
+    <div class="StepWrapper" v-if="isMetaStep(step)">
       <MetaStep :step="step" />
     </div>
 
@@ -10,7 +10,7 @@
       <ConsoleLogStep :step="step" />
     </div>
 
-    <div class="StepWrapper StepWrapper--indent1" v-else-if="isCommentStep(step)">
+    <div class="StepWrapper" v-else-if="isCommentStep(step)">
       <div class="step comment">
           {{step.args[0]}}
       </div>
@@ -408,15 +408,7 @@ export default {
 .StepWrapper {
   padding: .2em 0 .2em 0;
 }
-.StepWrapper--indent1 {
-  padding-left: .4em;
-}
-.StepWrapper--indent2 {
-  padding-left: .8em;
-}
-.StepWrapper--indent3 {
-  padding-left: 1.2em;
-}
+
 
 .GenericStep {
 }
