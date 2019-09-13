@@ -1,15 +1,11 @@
 <template>
     <div class="MetaStep columns is-gapless">
-        <div class="column is-3 ellipsize">
-            <strong class="StepMetaStep has-text-grey">
-                {{actorFromMetaStep(step)}}
-            </strong>
-        </div>
-        <div class="column">
-            <strong class="StepMetaStep has-text-dark">
-                {{methodFromMetaStep(step)}}
-            </strong>
-        </div>
+        <strong class="StepMetaStep has-text-grey">
+            {{actorFromMetaStep(step)}}
+        </strong>
+        <strong class="StepMetaStep has-text-dark">
+            {{methodFromMetaStep(step)}}
+        </strong>
     </div>
 </template>
 

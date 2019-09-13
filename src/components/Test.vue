@@ -38,8 +38,11 @@
           :key="step.title"
           @mouseover="setHoveredStep(step)"
           @mouseleave="unsetHoveredStep(step)"
+          @click="toggleSubsteps(step)"
+          :ref="step.section"
         >
           <step
+            :class="'ml-' + indentLevel(step)"
             :step="step"
             :isHovered="step === hoveredStep"
             :isSelected="step === selectedStep"
@@ -137,6 +140,11 @@ export default {
       return moment.unix(ts / 1000).fromNow();
     },
 
+    indentLevel(step) {
+      if (!step.section) return 0;
+      return step.section.split('_').length * 3;
+    },
+
     activateTab(tabname) {
       this.activeTab = tabname;
     },
@@ -154,6 +162,16 @@ export default {
     },
     trim(str) {
       return str.trim();
+    },
+    toggleSubsteps(step) {
+      if (step.type !== 'meta') return true;
+      if (!step.opens) return true;
+      for (const section in this.$refs) {
+        const els = this.$refs[section];
+        console.log(els);
+        if (section.startsWith(step.opens)) els.forEach(el => el.classList.toggle('hidden'));
+      }
+      // this.$refs.filter(el => )
     },
     setHoveredStep(step) {
       this.$store.commit('testRunPage/setHoveredStep', step);
