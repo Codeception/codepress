@@ -1,8 +1,9 @@
 <template>
-    <div class="MetaStep columns is-gapless">
+    <div class="step">
+    <i class="fas fa-chevron-down" :class="{ 'is-opened': isOpened }"></i>
         <strong class="StepMetaStep has-text-grey">
             {{actorFromMetaStep(step)}}
-        </strong>
+        </strong> 
         <strong class="StepMetaStep has-text-dark">
             {{methodFromMetaStep(step)}}
         </strong>
@@ -12,7 +13,7 @@
 <script>
 export default {
     name: 'MetaStep',
-    props: ['step'],
+    props: ['step','isOpened'],
     methods: {
         actorFromMetaStep(step) {
         if (step.actor) {
@@ -34,8 +35,12 @@ export default {
 </script>
 
 <style>
-.MetaStep {
+.MetaStep {    
   font-family: -apple-system,BlinkMacSystemFont,Lato,Helvetica Neue,sans-serif;
+}
+.step i {  transition: 0.5s all; }
+.is-opened {
+  transform: rotate(-90deg);
 }
 </style>
 

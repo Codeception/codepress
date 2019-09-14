@@ -3,7 +3,7 @@
     :class="{ 'StepContainer--selected': isSelected, 'StepContainer--failed': step.result === 'failed', 'StepContainer--passed': step.result === 'passed' }"
     @click="handleSelectStep(step)">
     <div class="StepWrapper" v-if="isMetaStep(step)">
-      <MetaStep :step="step" />
+      <MetaStep :step="step" :isOpened="isOpened" />
     </div>
 
     <div class="StepWrapper" v-else-if="isConsoleLogStep(step)">
@@ -186,7 +186,7 @@ import copyToClipboard from 'copy-text-to-clipboard';
 
 export default {
   name: 'Step',
-  props: ['step', 'selectedStep', 'isHovered', 'isSelected', 'error'],
+  props: ['step', 'selectedStep', 'isHovered', 'isSelected', 'isOpened', 'error'],
   components: {
     SendStep,
     ActionStep,
@@ -322,7 +322,6 @@ export default {
     &.comment {
       font-weight: bold;
       @apply text-blue-700 bg-gray-100;
-      box-shadow: none;
     }
     &.action {
       @apply bg-white;
@@ -341,7 +340,6 @@ export default {
       color: hsl(204, 86%, 53%);
       display: inline-block;
       vertical-align: bottom;
-      border-bottom: 1px solid;
       @apply text-blue-600 border-blue-400;
       padding: 0;
       white-space: nowrap;
