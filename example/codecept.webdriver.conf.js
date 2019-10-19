@@ -2,12 +2,9 @@ exports.config = {
   tests: './todomvc-tests/**/*_test.js',
   output: './output',
   helpers: {
-    Puppeteer: {
+    WebDriver: {
       url: 'http://localhost',
-      waitForTimeout: 5000,
-      waitForNavigation: 'networkidle0',
-      waitForAction: 0,
-      show: true,
+      browser: 'chrome',
     },
 
     REST: {},
@@ -17,12 +14,12 @@ exports.config = {
     }
   },
 
-  gherkin: {
-    features: './todomvc-tests/features/*.feature',
-    steps: [
-      './todomvc-tests/step-definitions/create-todos.steps.js'
-    ]
-  },
+  // gherkin: {
+  //   features: './todomvc-tests/features/*.feature',
+  //   steps: [
+  //     './todomvc-tests/step-definitions/create-todos.steps.js'
+  //   ]
+  // },
 
   include: {
     TodosPage: './todomvc-tests/pages/todos.page.js'
